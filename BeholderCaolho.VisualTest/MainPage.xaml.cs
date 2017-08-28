@@ -30,13 +30,25 @@ namespace BeholderCaolho.VisualTest
             this.InitializeComponent();
 
             attrManager = new AttributeManager()
-                .Add("Força", 10)
-                .Add("Destreza", 18)
-                .Add("Constituição", 10)
-                .Add("Inteligência", 16)
-                .Add("Sabedoria", 14)
-                .Add("Carisma", 12)
-                .Add("Classe de Armadura", 10)
+                .Add("Str", 10)
+                .Add("modStr", 0)
+                .SetUpdate("modStr", () => { return (int)((attrManager["Str"] - 10) / 2); })
+                .Add("Dex", 10)
+                .Add("modDex", 0)
+                .SetUpdate("modDex", () => { return (int)((attrManager["Dex"] - 10) / 2); })
+                .Add("Con", 10)
+                .Add("modCon", 0)
+                .SetUpdate("modCon", () => { return (int)((attrManager["Con"] - 10) / 2); })
+                .Add("Int", 10)
+                .Add("modInt", 0)
+                .SetUpdate("modInt", () => { return (int)((attrManager["Int"] - 10) / 2); })
+                .Add("Wis", 10)
+                .Add("modWis", 0)
+                .SetUpdate("modWis", () => { return (int)((attrManager["Wis"] - 10) / 2); })
+                .Add("Cha", 10)
+                .Add("modCha", 0)
+                .SetUpdate("modCha", () => { return (int)((attrManager["Cha"] - 10) / 2); })
+                .Add("ArmorClass", 10)
                 .SetUpdate("Classe de Armadura", () => 10 + attrManager["modDex"]);
         }
     }

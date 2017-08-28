@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeholderCaolho.AttributeManagerLib", "BeholderCaolho.AttributeManagerLib\BeholderCaolho.AttributeManagerLib.csproj", "{714FB032-3755-4DF4-BEB0-5585853B36DE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeholderCaolho.VisualTest", "BeholderCaolho.VisualTest\BeholderCaolho.VisualTest.csproj", "{1124429B-F07A-4089-92CD-96102DFD3027}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{E1A53FAC-DD22-4DD3-8F35-3DABB355AC03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,22 @@ Global
 		{1124429B-F07A-4089-92CD-96102DFD3027}.Release|x86.ActiveCfg = Release|x86
 		{1124429B-F07A-4089-92CD-96102DFD3027}.Release|x86.Build.0 = Release|x86
 		{1124429B-F07A-4089-92CD-96102DFD3027}.Release|x86.Deploy.0 = Release|x86
+		{E1A53FAC-DD22-4DD3-8F35-3DABB355AC03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1A53FAC-DD22-4DD3-8F35-3DABB355AC03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1A53FAC-DD22-4DD3-8F35-3DABB355AC03}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{E1A53FAC-DD22-4DD3-8F35-3DABB355AC03}.Debug|ARM.Build.0 = Debug|Any CPU
+		{E1A53FAC-DD22-4DD3-8F35-3DABB355AC03}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E1A53FAC-DD22-4DD3-8F35-3DABB355AC03}.Debug|x64.Build.0 = Debug|Any CPU
+		{E1A53FAC-DD22-4DD3-8F35-3DABB355AC03}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E1A53FAC-DD22-4DD3-8F35-3DABB355AC03}.Debug|x86.Build.0 = Debug|Any CPU
+		{E1A53FAC-DD22-4DD3-8F35-3DABB355AC03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1A53FAC-DD22-4DD3-8F35-3DABB355AC03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1A53FAC-DD22-4DD3-8F35-3DABB355AC03}.Release|ARM.ActiveCfg = Release|Any CPU
+		{E1A53FAC-DD22-4DD3-8F35-3DABB355AC03}.Release|ARM.Build.0 = Release|Any CPU
+		{E1A53FAC-DD22-4DD3-8F35-3DABB355AC03}.Release|x64.ActiveCfg = Release|Any CPU
+		{E1A53FAC-DD22-4DD3-8F35-3DABB355AC03}.Release|x64.Build.0 = Release|Any CPU
+		{E1A53FAC-DD22-4DD3-8F35-3DABB355AC03}.Release|x86.ActiveCfg = Release|Any CPU
+		{E1A53FAC-DD22-4DD3-8F35-3DABB355AC03}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

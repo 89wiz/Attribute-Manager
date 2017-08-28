@@ -11,39 +11,52 @@ namespace BeholderCaolho.AttributeManagerLib
     {
         private List<Attribute> attributes = new List<Attribute>();
         private List<AttributeModifier> modifiers = new List<AttributeModifier>();
-        private List<Attribute> calcAttributes = new List<Attribute>();
+        private List<CalcAttribute> calcAttributes = new List<CalcAttribute>();
 
         public float this[string _attr]
         {
             get
             {
-                var attr = calcAttributes.FirstOrDefault(a => a.Name.Equals(_attr));
-                if (attr != null) return calcAttributes.FirstOrDefault(a => a.Name.Equals(_attr)).Value;
+                var attr = GetCalcAttr(_attr);
+                if (attr != null) return attr.Value;
                 else return 0;
             }
         }
 
-        public Attribute GetCalcAttr(string _name)
+        protected float this[string _attr, AttributeModifier.ModifierType _type]
         {
-            return Get(calcAttributes, _name);
+            get
+            {
+                return GetModSum(_attr, _type);
+                //if (attr != null) return attr.Value;
+                //else return 0;
+            }
         }
 
-        public Attribute GetAttr(string _name)
+        protected CalcAttribute GetCalcAttr(string _name)
+        {
+            return Get(calcAttributes, _name) as CalcAttribute;
+        }
+
+        protected Attribute GetAttr(string _name)
         {
             return Get(attributes, _name);
         }
 
-        private Attribute Get(List<Attribute> _list, string _name)
+        protected Attribute Get<T>(List<T> _list, string _name) where T : Attribute
         {
             return _list.FirstOrDefault(a => a.Name.Equals(_name));
+        }
+
+        protected float GetModSum(string _name, AttributeModifier.ModifierType _type)
+        {
+            return modifiers.Where(m => m.type == _type).Sum(m => m.Value);
         }
 
         public AttributeManager Add(Attribute _attr)
         {
             attributes.Add(_attr);
-            calcAttributes.Add(_attr);
-
-            _attr.onUpdate = OnUpdate;
+            calcAttributes.Add(new CalcAttribute(_attr, OnUpdate, () => { return (this[_attr.Name] + this[_attr.Name, AttributeModifier.ModifierType.Flat]) * (1 + this[_attr.Name, AttributeModifier.ModifierType.Percentual]); }));
 
             return this;
         }
@@ -66,28 +79,41 @@ namespace BeholderCaolho.AttributeManagerLib
             return Update(new Attribute { Name = _name, Value = _value });
         }
 
-        public AttributeManager SetUpdate(string _name, Attribute.Update _update)
+        public AttributeManager SetUpdate(string _name, CalcAttribute.GetValueDelegate _update)
         {
-            var attr = attributes.FirstOrDefault(a => a.Name.Equals(_name));
-            if (attr != null) attr.update = _update;
+            var calcAttr = calcAttributes.FirstOrDefault(a => a.Name.Equals(_name));
+            if (calcAttr != null) calcAttr.GetValue = _update;
 
             return this;
         }
 
-        private void OnUpdate(string _name)
+        public AttributeManager AddDependency(string _name, params string[] _list)
+        {
+            foreach (var s in _list)
+            {
+                var calc = GetCalcAttr(s);
+                if (calc != null) calc.Updates.Add(_name);
+            }
+
+            return this;
+        }
+
+        public void UpdateAll()
         {
             foreach (var attr in calcAttributes)
             {
-                if (attr.Depends.Contains(_name)) attr.update();
+                attr.UpdateValue();
             }
         }
 
-        private void OnUpdate(Attribute _attr)
+        private void OnUpdate(string _name)
         {
-            foreach (var s in _attr.Updates)
+            var calc = GetCalcAttr(_name);
+
+            foreach (var s in calc.Updates)
             {
-                var attr = GetCalcAttr(s);
-                if (attr != null) attr.update();
+                var update = GetCalcAttr(s);
+                if (update != null) update.UpdateValue();
             }
         }
     }

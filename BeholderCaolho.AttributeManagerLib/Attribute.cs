@@ -8,14 +8,9 @@ namespace BeholderCaolho.AttributeManagerLib
 {
     public class Attribute
     {
-        public delegate void OnUpdate(Attribute attr);
-        public OnUpdate onUpdate;
-        public delegate void Update();
-        public Update update;
+        public delegate void OnUpdateDelegate(string attrName);
+        public OnUpdateDelegate OnUpdate;
 
-        public List<string> Depends { get; set; }
-        public List<string> Updates { get; set; }
-        
         public string Name { get; set; }
 
         private float value;
@@ -27,9 +22,32 @@ namespace BeholderCaolho.AttributeManagerLib
             }
             set
             {
-                onUpdate(Name);
+                OnUpdate?.Invoke(Name);
                 this.value = value;
             }
+        }
+    }
+
+    public class CalcAttribute : Attribute
+    {
+        public delegate float GetValueDelegate();
+        public GetValueDelegate GetValue;
+        
+        public List<string> Updates { get; set; }
+
+        public CalcAttribute(Attribute _attr, OnUpdateDelegate _onUpdate, GetValueDelegate _getValue)
+        {
+            Name = _attr.Name;
+            Value = _attr.Value;
+            OnUpdate = _onUpdate;
+            GetValue = _getValue;
+
+            Updates = new List<string>();
+        }
+
+        public void UpdateValue()
+        {
+            Value = GetValue();
         }
     }
 

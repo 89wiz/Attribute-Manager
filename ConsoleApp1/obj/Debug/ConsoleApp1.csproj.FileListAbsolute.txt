@@ -1,0 +1,8 @@
+C:\lgsscout@github.com\Attribute-Manager\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+C:\lgsscout@github.com\Attribute-Manager\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+C:\lgsscout@github.com\Attribute-Manager\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+C:\lgsscout@github.com\Attribute-Manager\ConsoleApp1\bin\Debug\BeholderCaolho.AttributeManagerLib.dll
+C:\lgsscout@github.com\Attribute-Manager\ConsoleApp1\bin\Debug\BeholderCaolho.AttributeManagerLib.pdb
+C:\lgsscout@github.com\Attribute-Manager\ConsoleApp1\obj\Debug\ConsoleApp1.csprojResolveAssemblyReference.cache
+C:\lgsscout@github.com\Attribute-Manager\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+C:\lgsscout@github.com\Attribute-Manager\ConsoleApp1\obj\Debug\ConsoleApp1.pdb

@@ -1,0 +1,5 @@
+C:\lgsscout@github.com\Attribute-Manager\BeholderCaolho.AttributeManagerLib\obj\Debug\BeholderCaolho.AttributeManagerLib.csprojResolveAssemblyReference.cache
+C:\lgsscout@github.com\Attribute-Manager\BeholderCaolho.AttributeManagerLib\bin\Debug\BeholderCaolho.AttributeManagerLib.dll
+C:\lgsscout@github.com\Attribute-Manager\BeholderCaolho.AttributeManagerLib\bin\Debug\BeholderCaolho.AttributeManagerLib.pdb
+C:\lgsscout@github.com\Attribute-Manager\BeholderCaolho.AttributeManagerLib\obj\Debug\BeholderCaolho.AttributeManagerLib.dll
+C:\lgsscout@github.com\Attribute-Manager\BeholderCaolho.AttributeManagerLib\obj\Debug\BeholderCaolho.AttributeManagerLib.pdb
