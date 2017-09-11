@@ -48,6 +48,7 @@ namespace BeholderCaolho.AttributeManagerLib
         public void UpdateValue()
         {
             Value = GetValue();
+            OnUpdate(Name);
         }
     }
 

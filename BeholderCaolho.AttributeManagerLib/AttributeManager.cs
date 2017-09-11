@@ -28,8 +28,6 @@ namespace BeholderCaolho.AttributeManagerLib
             get
             {
                 return GetModSum(_attr, _type);
-                //if (attr != null) return attr.Value;
-                //else return 0;
             }
         }
 
@@ -51,6 +49,11 @@ namespace BeholderCaolho.AttributeManagerLib
         protected float GetModSum(string _name, AttributeModifier.ModifierType _type)
         {
             return modifiers.Where(m => m.type == _type).Sum(m => m.Value);
+        }
+
+        protected float GetModMax(string _name, AttributeModifier.ModifierType _type)
+        {
+            return modifiers.Where(m => m.type == _type).Max(m => m.Value);
         }
 
         public AttributeManager Add(Attribute _attr)
@@ -77,6 +80,42 @@ namespace BeholderCaolho.AttributeManagerLib
         public AttributeManager Update(string _name, float _value)
         {
             return Update(new Attribute { Name = _name, Value = _value });
+        }
+
+        public AttributeManager AddModifier(AttributeModifier _attr)
+        {
+            modifiers.Add(_attr);
+
+            var attr = GetCalcAttr(_attr.Name);
+            if (attr != null) attr.UpdateValue();
+
+            return this;
+        }
+
+        public AttributeManager AddModifier(string _name, float _value, AttributeModifier.ModifierType _type = AttributeModifier.ModifierType.Flat)
+        {
+            return AddModifier(new AttributeModifier { Name = _name, Value = _value, type = _type });
+        }
+
+        public AttributeManager UpdateModifier(AttributeModifier _attr, float _value)
+        {
+            var mod = modifiers.FirstOrDefault(a => a.Equals(_attr));
+            if (mod != null) mod.Value = _value;
+
+            var attr = GetCalcAttr(_attr.Name);
+            if (attr != null) attr.UpdateValue();
+
+            return this;
+        }
+
+        public AttributeManager RemoveModifier(AttributeModifier _attr)
+        {
+            attributes.Remove(_attr);
+
+            var attr = GetCalcAttr(_attr.Name);
+            if (attr != null) attr.UpdateValue();
+
+            return this;
         }
 
         public AttributeManager SetUpdate(string _name, CalcAttribute.GetValueDelegate _update)
